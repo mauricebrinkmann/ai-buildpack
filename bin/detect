@@ -12,9 +12,9 @@
 BUILD_DIR=$1
 BP=$(dirname $(dirname $0))
 
-# Exit early if app is clearly not Python.
-if [ ! -f $BUILD_DIR/requirements.txt ] && [ ! -f $BUILD_DIR/setup.py ] && [ ! -f $BUILD_DIR/environment.yml ] && [ ! -f $BUILD_DIR/Pipfile ]; then
+# Exit early if app is clearly not an AI project that has the required environment variables set.
+if [ -z "${STACKIT_MODEL_SERVING_AUTH_TOKEN}" ] || [ -z "${STACKIT_MODEL_SERVING_AUTH_TOKEN}" ]; then
   exit 1
 fi
 
-echo "python `cat $BP/VERSION`"
+echo "ai `cat $BP/VERSION`"
