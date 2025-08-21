@@ -6,6 +6,11 @@ CACHE_DIR=$2
 DEPS_DIR=$3
 DEPS_IDX=$4
 
+# Exit early if app is clearly not an AI project that has the required environment variables set.
+if [ -z "${STACKIT_MODEL_SERVING_AUTH_TOKEN}" ] || [ -z "${CF_APP_SPEC}" ]; then
+  exit 1
+fi
+
 # Prepend proper environment variables for Python use.
 export PYTHONUNBUFFERED=1
 export LANG=${LANG:-en_US.UTF-8}
