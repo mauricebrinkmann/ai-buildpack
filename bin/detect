@@ -13,7 +13,7 @@ BUILD_DIR=$1
 BP=$(dirname $(dirname $0))
 
 # Exit early if app is clearly not an AI project that has the required environment variables set.
-if [ -z "${STACKIT_MODEL_SERVING_AUTH_TOKEN}" ] || [ -z "${CF_APP_SPEC}" ]; then
+if [ ! -f "${BUILD_DIR}/ai.env" ]; then
   exit 1
 fi
 
