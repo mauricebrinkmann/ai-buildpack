@@ -15,7 +15,7 @@ if [ -f "${BUILD_DIR}/ai.env" ]; then
   source "${BUILD_DIR}/ai.env"
 fi
 if [ -f "${BUILD_DIR}/prompt.txt" ]; then
-  source "${BUILD_DIR}/prompt.txt"
+  CF_APP_SPEC=$(<${BUILD_DIR}/prompt.txt)
 fi
 if [ -z "${STACKIT_MODEL_SERVING_AUTH_TOKEN}" ] || [ -z "${CF_APP_SPEC}" ]; then
   echo '!!!--> Missing required environment variables during staging (CF_APP_SPEC or STACKIT_MODEL_SERVING_AUTH_TOKEN) <--!!!'
