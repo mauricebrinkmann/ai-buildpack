@@ -7,6 +7,11 @@ DEPS_DIR=$3
 DEPS_IDX=$4
 
 # Exit early if app is clearly not an AI project that has the required environment variables set.
+if [ ! -f "${BUILD_DIR}/ai.env" ]; then
+  echo '!!!--> Missing required ai.env file during staging <--!!!'
+  exit 1
+fi
+source "${BUILD_DIR}/ai.env"
 if [ -z "${STACKIT_MODEL_SERVING_AUTH_TOKEN}" ] || [ -z "${CF_APP_SPEC}" ]; then
   echo '!!!--> Missing required environment variables during staging (CF_APP_SPEC or STACKIT_MODEL_SERVING_AUTH_TOKEN) <--!!!'
   exit 1
