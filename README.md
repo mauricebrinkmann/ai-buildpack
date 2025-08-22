@@ -2,7 +2,7 @@
 
 A Cloud Foundry [buildpack](http://docs.cloudfoundry.org/buildpacks/) for pushing prompt text that result in Python based apps.
 
-This buildpack supports running Django and Flask apps, like the official [Python buildpack](http://docs.cloudfoundry.org/buildpacks/python/index.html) it is based on.
+This buildpack builds upon the official [Python buildpack](http://docs.cloudfoundry.org/buildpacks/python/index.html).
 
 ### Buildpack User Documentation
 
@@ -51,10 +51,19 @@ You have the following option to push an app to Cloud Foundry this way:
  
  
   
-4. Why not pushing just a `manifest.yml` with all needed environment variables or just a `cf push` with `-b 'https://github.com/funcf/ai-buildpack.git'` and the prompt injected as start command with `-c 'I need an app to play tic tac toe in the browser.'` (_the_ initial idea btw.)?
+### Why not pushing just a `manifest.yml` with all needed environment variables or just a `cf push` with `-b 'https://github.com/funcf/ai-buildpack.git'` and the prompt injected as start command with `-c 'I need an app to play tic tac toe in the browser.'` (_the_ initial idea btw.)?
 
    The current Cloud Foundry implementation will fail if you push no files other than a `manifest.yml` (because magic AI buildpacks were not there yet ;-)!
+ 
+  
+### What model is used and how can I change the model or the model serving service?
 
+   Via app environment variable or a separate `ai.env` file you can change the following  default values:
+   ```bash
+   STACKIT_MODEL_SERVING_BASE_URL='https://api.openai-compat.model-serving.eu01.onstackit.cloud/v1'
+   STACKIT_MODEL_SERVING_MODEL='google/gemma-3-27b-it'
+   ```
+   The API Call will be a POST request to: `${STACKIT_MODEL_SERVING_BASE_URL}/chat/completions`.
 
 
 ### Reporting Issues
