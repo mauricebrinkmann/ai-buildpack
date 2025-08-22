@@ -39,7 +39,7 @@ pushd $CACHE_DIR
       },
           {
               "role": "user",
-              "content": "Answer with the code for all needed and referenced files starting with the creation of all needed folders for the following requirements in the matching language:\n```\n'"${CF_APP_SPEC:-A web page that explains to be a demo app and that the user need to provide requirements with the -c parameter or as CF_APP_SPEC environment variable in order to see a more complex app.}"'\n```"
+              "content": "Answer with the code to generate all needed and referenced files with echo and afterwards asure that all required sub directories are created with mkdir -p for the following requirements in the matching language:\n```\n'"${CF_APP_SPEC:-A web page that explains to be a demo app and that the user need to provide requirements with the -c parameter or as CF_APP_SPEC environment variable in order to see a more complex app.}"'\n```"
           }
       ],
       "temperature": 0.1
