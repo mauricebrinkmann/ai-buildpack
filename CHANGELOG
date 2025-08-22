@@ -1,3 +1,8 @@
+v1.8.33ai Aug 22, 2025
+=====================
+* Transform the python_buildpack v1.8.33 into an ai_buildpack v1.8.33ai
+  for pushing text prompts instead of python code
+
 v1.8.33 Feb 20, 2025
 =====================
 

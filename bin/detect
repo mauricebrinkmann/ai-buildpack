@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # This script serves as the
-# [**Python Buildpack**](https://github.com/cloudfoundry/python-buildpack)
+# [**AI Buildpack**](https://github.com/funcf/ai-buildpack)
 # detector.
 #
 # ## Usage
@@ -12,8 +12,9 @@
 BUILD_DIR=$1
 BP=$(dirname $(dirname $0))
 
-# Exit early if app is clearly not an AI project that has the required environment variables set.
-if [ ! -f "${BUILD_DIR}/ai.env" ] && [ ! -f "${BUILD_DIR}/prompt.txt" ]; then
+# Exit early if app is clearly not an AI project that has one of the required files in place:
+# (Either a Promptfile or the ai.env with CF_APP_SPEC must be present during staging)
+if [ ! -f "${BUILD_DIR}/ai.env" ] && [ ! -f "${BUILD_DIR}/Promptfile" ]; then
   exit 1
 fi
 
