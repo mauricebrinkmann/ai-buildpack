@@ -51,12 +51,14 @@ You have the following option to push an app to Cloud Foundry this way:
  
  
   
-### Why not pushing just a `manifest.yml` with all needed environment variables or just a `cf push` with `-b 'https://github.com/funcf/ai-buildpack.git'` and the prompt injected as start command with `-c 'I need an app to play tic tac toe in the browser.'` (_the_ initial idea btw.)?
+### FAQ
+
+#### A) Why not pushing just a `manifest.yml` with all needed environment variables or just a `cf push` with `-b 'https://github.com/funcf/ai-buildpack.git'` and the prompt injected as start command with `-c 'I need an app to play tic tac toe in the browser.'` (_the_ initial idea btw.)?
 
    The current Cloud Foundry implementation will fail if you push no files other than a `manifest.yml` (because magic AI buildpacks were not there yet ;-)!
  
   
-### What model is used and how can I change the model or the model serving service?
+#### B) What model is used and how can I change the model or the model serving service?
 
    Via app environment variable or a separate `ai.env` file you can change the following  default values:
    ```bash
